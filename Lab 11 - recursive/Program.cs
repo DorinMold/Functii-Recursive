@@ -15,11 +15,18 @@ namespace Lab_11___recursive
         {
             Program p = new Program();
             int[] arr = new int[] { 23, 45, 12, 29, 133, 400, 134, 260, 300, 101 , 313, 210};
+
+            //-------------Gasire minim-----------------------
+
             Console.WriteLine(p.GasireMinim(arr, i));
+
+            //---------------Gasirea Maximului-------------------
 
             i = 0;
 
             Console.WriteLine(p.GasireMaxim(arr, i));
+
+            //---------------Gasire index in vector ordonat -----------------------
 
             for ( i = 0; i < arr.Length ; i++ )
             {
@@ -34,7 +41,10 @@ namespace Lab_11___recursive
 
             element = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write( $"Elementul selectat este la pozitia: { p.GasireIndex(arr) }");
+            Console.WriteLine( $"Elementul selectat este la pozitia: { p.GasireIndex(arr) }");
+
+            //------------Fibonnaci--------------------
+            FibonanaciInvoke(20);
 
         }
 
@@ -113,5 +123,37 @@ namespace Lab_11___recursive
 
         }
 
+        static int[] Fibonnaci;
+        public static void FibonanaciInvoke(int n)
+        {
+            Fibonnaci = new int[n];
+            FibCalculation(0);
+        }
+
+        public static int FibCalculation(int m)
+        {
+            if (m == 0)
+            {
+                Fibonnaci[0] = 0;
+            }
+            else if (m == 1)
+            {
+                Fibonnaci[1] = 1;
+            }
+
+            else if (m < Fibonnaci.Length)
+            {
+                Fibonnaci[m] = Fibonnaci[m - 2] + Fibonnaci[m - 1];
+            }
+            else
+            {
+                Console.WriteLine(String.Join(", ", Fibonnaci));
+                return 0;
+            }
+
+            return FibCalculation(m + 1);
+
+        }
     }
 }
+
